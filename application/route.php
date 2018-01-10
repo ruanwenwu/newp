@@ -21,4 +21,7 @@ return [
 
 ];
 
-Route::domain('ad.ruanwenwu.cn','admin');
+Route::get('/',function(){
+    return 'Hello,world!';
+});
+
