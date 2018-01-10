@@ -23,5 +23,5 @@ return [
 
 Route::get('/',function(){
     return 'Hello,world!';
-});
+});    
 
