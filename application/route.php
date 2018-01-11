@@ -10,7 +10,7 @@ use think\Route;
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 
-return [
+/*return [
     '__pattern__' => [
         'name' => '\w+',
     ],
@@ -19,7 +19,7 @@ return [
         ':name' => ['index/hello', ['method' => 'post']],
     ],
 
-];
+];*/
 
 Route::get('/',function(){
     return 'Hello,world!';
