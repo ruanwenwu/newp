@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+    <title>『OPPO帐号』-登录</title>
+    <meta name="keywords" content=" OPPO帐号,登录,注册,找回密码,OPPO账号,OPPO会员" />
+    <meta name="description" content="登录OPPO帐号，可以在OPPO官网、社区、软件商店、游戏中心、主题商店等享受更多功能服务。 " />
+    <link rel="stylesheet" href="{$staticHost}my/css/common.css" />
+        <style>
+            input:-webkit-autofill+label{display:none;}
+            input:-moz-autofill+label{display:none;}
+        </style>
+</head>
+<body>
+<div class="wrapper">
+        <div class="header">
+            <div class="w960" style="display:none;" id="headerlinks">
+                 <ul class="menu_sec">
+                    <li><a href="http://www.oppo.com" translang="oppocom"></a></li>
+                    <li><a href="http://www.oppo.cn/" translang="oppocn"></a></li>
+                    <li><a href="http://www.coloros.com/" translang="coloros"></a></li>
+                    <div class="clear"></div>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+
+
+        <div class="login_box">
+            <div class="mainbox">
+                <!--头部logo-->
+                <div class="lgnheader">
+                    <div class="logo"></div>
+                    <h3 class="title" translang="logintext" style="height:20px;">登录OPPO帐号可享受更多的服务</h3>
+                </div>
+                <!--主体登录框-->
+                <div class="login_area">
+                    <div class="login_form" >
+                        <div class="input_area globalcont phonecont" id="globalUserNameCont">
+                            <div class="selectCountry" id="selectCycode">
+                                <p id="select_cycode_result" translang="selectcycode"></p>
+                                <i class="icon_arrow"></i>
+                            </div>
+                            <div class="country_ontainer_panel">
+                                <div class="country_container" status="unexpand" id="countryCont">
+                                    <div class="search_code">
+                                        <i class="icon_search"></i>
+                                        <input type="text" class="search_code_input" id="searchCodeInput" transplaceholder="searchcycode" placeholder="">
+                                    </div>
+                                    <div class="country_code" id="countryCodeCont">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="error_tip" id="info_selectCycode"></div>
+                        <div class="input_area globalcont">
+                            <input type="text"  id="globalusername" name="globalusername" autocomplete="off"  class="globalusername" />
+                            <label class="placeholder" for="globalusername" translang="login_msg_nophone"></label>
+                        </div>
+                        <div class="input_area noglobalcont" id="noglobalUserNameCont">
+                            <input type="text"  id="username" name="username" autocomplete="off"  class="username" />
+                            <label class="placeholder" for="username" translang="login_msg_nousername">请输入手机号</label>
+                        </div>
+                        <div class="error_tip" id="info_username"></div>
+
+                        <div class="input_area">
+                            <input type="password"  id="pwd"  autocomplete="off"  class="pwd"/>
+                            <label class="placeholder" for="pwd" translang="login_msg_nopwd">请输入密码</label>
+                        </div>
+                        <div class="error_tip" id="info_pwd"></div>
+
+                        <div id="captcha_area">
+                            <div class="error_tip" id="info_vercode"></div>
+                        </div>
+
+
+                        <div class="field">
+                            <a href="javascript:;" class="globalcont text_green fl" id="globalLoginWayBtn" translang="useremaillogin"></a>
+                            <a onclick="problems();" class="text_green fr" translang="forgetpwd" id="forgetgobtn">忘记密码</a>
+                            <div class="clear"></div>
+
+                        </div>
+                        <input type="submit" class="button login_button mt30" id="loginBtn" transvalue="loginbtn" value="登陆" onclick="check_login();"  style="margin-bottom:15px;" />
+                        <input type="button" class="button register_button oppo-tj" id="registerBtn" transvalue="registerbtn" value="注册账号"  link = "/register/sms;JSESSIONID=57eb30e0-6858-4012-869f-cf58fa535073?type=1"  data-tj="account|link|register|register"/>
+
+                        <div class="error_tip1" style="margin-top:10px;" id="info_login_form"></div>
+
+                        <!--其他登录方式-->
+                        <div class="n_links_area" id="otherLogin">
+                            <div class="oth_type_list"></div>
+                            <div class="oth_type_links">
+                                <a class="other_link ico_qq oppo-tj" href="http://my.ruanwenwu.cn/qqloginsdk/example/oauth/index.php"  data-tj="account|link|loginqq|qq"></a>
+                           <!--      <a  class="other_link ico_wb oppo-tj" link="http://my.oppo.com/auth/sinalogin" data-tj="account|link|loginweibo|weibo" ></a>
+                           <a  class="other_link ico_alipay oppo-tj"  link="http://my.oppo.com/auth/alipaylogin" data-tj="account|link|loginzfb|zfb"></a> -->
+                                <a class="other_link ico_wx oppo-tj" link="http://my.oppo.com/auth/wxlogin" data-tj="account|link|loginwx|wx"></a>
+                            </div>
+                        </div>
+                        <input type="hidden"  id="password" name="password" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer_info">
+                <p translang="footer_text"></p>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+    <!--超时弹框-->
+    <div class="pop_dlg" id="timeout_dlg">
+        <a class="ico_close"></a>
+        <h4 class="dlg_title">操作超时</h4>
+        <div class="dlg_wrapper">
+            <div class="dlg_content">您长时间未操作，请重新操作。</div>
+            <div class="button login_button" style="margin-top:25px" id="timeout_btn">知道了</div>
+        </div>
+    </div>
+   
+</body>
+</html>
