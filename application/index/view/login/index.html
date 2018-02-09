@@ -4,9 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
 
-    <title>『OPPO帐号』-登录</title>
-    <meta name="keywords" content=" OPPO帐号,登录,注册,找回密码,OPPO账号,OPPO会员" />
-    <meta name="description" content="登录OPPO帐号，可以在OPPO官网、社区、软件商店、游戏中心、主题商店等享受更多功能服务。 " />
+    <title>{$seoData['title']}</title>
+    <meta name="keywords" content="{$seoData['keywords']}" />
+    <meta name="description" content="{$seoData['description']}" />
     <link rel="stylesheet" href="{$staticHost}my/css/common.css" />
         <style>
             input:-webkit-autofill+label{display:none;}
@@ -57,17 +57,17 @@
                         </div>
                         <div class="error_tip" id="info_selectCycode"></div>
                         <div class="input_area globalcont">
-                            <input type="text"  id="globalusername" name="globalusername" autocomplete="off"  class="globalusername" />
+                            <input type="text"  id="globalusername" name="globalusername" autocomplete="off"  class="labelinput globalusername" />
                             <label class="placeholder" for="globalusername" translang="login_msg_nophone"></label>
                         </div>
                         <div class="input_area noglobalcont" id="noglobalUserNameCont">
-                            <input type="text"  id="username" name="username" autocomplete="off"  class="username" />
+                            <input type="text"  id="username" name="username" autocomplete="off"  class="labelinput username" />
                             <label class="placeholder" for="username" translang="login_msg_nousername">请输入手机号</label>
                         </div>
                         <div class="error_tip" id="info_username"></div>
 
                         <div class="input_area">
-                            <input type="password"  id="pwd"  autocomplete="off"  class="pwd"/>
+                            <input type="password"  id="pwd"  autocomplete="off"  class="labelinput pwd"/>
                             <label class="placeholder" for="pwd" translang="login_msg_nopwd">请输入密码</label>
                         </div>
                         <div class="error_tip" id="info_pwd"></div>
@@ -109,10 +109,6 @@
         </div>
     </div>
 
-
-    
-
-
     <!--超时弹框-->
     <div class="pop_dlg" id="timeout_dlg">
         <a class="ico_close"></a>
@@ -124,4 +120,26 @@
     </div>
    
 </body>
+<script src="{$staticHost}lib/jquery-1.9.min.js"></script>
+<script>
+//input失去焦点，如果输入内容为空，那么label要出来
+$(".labelinput").blur(function(){
+	if($(this).val() == ""){
+		$(this).next().show();
+	}
+});
+
+//input聚焦，如果内容为空，那么label隐藏
+$(".labelinput").focus(function(){
+	if($(this).val() == ""){
+		$(this).next().hide();
+	}
+});
+
+//验证手机格式->验证密码格式->验证验证码->给出对应提示
+function check_login(){
+	$(".error_tip").text("sdfsdf").show();
+	return false;
+}
+</script>
 </html>

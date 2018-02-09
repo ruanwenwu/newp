@@ -29,4 +29,5 @@ Route::rule('/','index/index/index','GET');
 Route::rule(':user/:blog_id','index/index/test','GET');
 Route::get("/modeltest","index/index/modeltest");
 Route::get('/login','index/login/index');
-
+Route::get("/test",'index/index/dd');
+Route::get('/auth/register','index/auth/register');

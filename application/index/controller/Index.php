@@ -29,5 +29,12 @@ class Index extends Controller
         halt($res);
     }
     
+    public function dd(){
+        //\API_Test::dd();
+        $link = \API_Db_Lsf::instance();
+        $res = $link->getRow("select * from lsf_user");
+        var_dump($res);
+    }
+    
     
 }

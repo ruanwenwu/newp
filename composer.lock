@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdab9e62f98990211fcf12794e4e3dad",
+    "content-hash": "8f5031a1f091b3068e03077a05dc4cb4",
     "packages": [
         {
             "name": "monolog/monolog",
@@ -133,16 +133,16 @@
         },
         {
             "name": "topthink/framework",
-            "version": "v5.0.14",
+            "version": "v5.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "3d1bdfbc19a7e7fd323be1dd53c4bacbe7bfb706"
+                "reference": "7c1375791fe8772e33282ee8611ea465dc215fca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/3d1bdfbc19a7e7fd323be1dd53c4bacbe7bfb706",
-                "reference": "3d1bdfbc19a7e7fd323be1dd53c4bacbe7bfb706",
+                "url": "https://files.phpcomposer.com/files/top-think/framework/7c1375791fe8772e33282ee8611ea465dc215fca.zip",
+                "reference": "7c1375791fe8772e33282ee8611ea465dc215fca",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +180,43 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2018-01-01T12:44:11+00:00"
+            "time": "2018-01-31T08:40:10+00:00"
+        },
+        {
+            "name": "topthink/think-captcha",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-captcha.git",
+                "reference": "0c55455df26a1626a60d0dc35d2d89002b741d44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/top-think/think-captcha/0c55455df26a1626a60d0dc35d2d89002b741d44.zip",
+                "reference": "0c55455df26a1626a60d0dc35d2d89002b741d44",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "think\\captcha\\": "src/"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "yunwuxin",
+                    "email": "448901948@qq.com"
+                }
+            ],
+            "description": "captcha package for thinkphp5",
+            "time": "2016-07-06T01:47:11+00:00"
         },
         {
             "name": "topthink/think-installer",

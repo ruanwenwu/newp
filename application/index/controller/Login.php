@@ -5,7 +5,7 @@ use think\Controller;
 use think\Request;
 use think\Config;
 
-class Login extends Controller
+class Login extends BaseController
 {
     /**
      * 显示资源列表
@@ -15,8 +15,13 @@ class Login extends Controller
     public function index()
     {
         //
-        $staticHost = Config::get("static_host");
-        $this->assign("staticHost",$staticHost);
+        $this->assignPublicForView();
+        $seoData = array(
+            "title"         =>  "t",
+            "description"   =>  "d",
+            "keywords"      =>  "k",
+        );
+        $this->assign("seoData", $seoData);
         return $this->fetch("index");
     }
 

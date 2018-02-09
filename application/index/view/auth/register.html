@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<html class='no-js'>
+  <!-- Added by HTTrack -->
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE" />
+    <meta content='width=device-width,initial-scale=1, user-scalable=no' name='viewport'>
+    <title>联合登录(身份验证)</title>
+    <link media="all" type="text/css" rel="stylesheet" href="{$staticHost}my/css/auth_register.css">
+  </head>
+
+  <body>
+  
+      <main class="main-content third_register">
+  <div class='wrapper'>
+    <form class='third_register_form'>
+      <div class='field'>
+        <p class='title'>为了给您提供更好的服务与支持，请完善手机信息。</p>
+      </div>
+      <p class='error' id='errorMsg'></p>
+      <div class='field'>
+        <p><input type='text' placeholder='手机号' value='' name='mobile' id='mobile'  class='oppo-tj'/></p>
+      </div>
+      <div class='field'>
+        <p class='password-item'><input type='password' placeholder='设置密码' value='' name='password' id='password' class='oppo-tj'/><a href="#" class='oppo-tj' id='passwordSwitch'>&nbsp;</a></p>
+      </div>
+      <div class='field' id='password-tip'>
+        <p class='tip'>（密码长度6-16位，数字、字母、字符至少包含两种）</p>
+      </div>
+      <div class='field input-captcha-item hidden' id='captchaItem'>
+        <input type='text' placeholder='验证码' value='' name='captcha' id='captchaCode' class='oppo-tj'/>
+        <img src='/captcha' id='captcha'/>
+        <a href="#" id='changeCaptcha' class='oppo-tj'>换一换</a>
+      </div>
+      <div class='field input-button-item'>
+        <input type='text' placeholder='手机验证码' value='' name='code' id='code' class='oppo-tj'/>
+        <button class='button button-primary oppo-tj' id='getMobileCode'>获取验证码</button>
+      </div>
+      <div class='field'>
+        <p class='submit'><button class='button button-primary oppo-tj' id='submit'>确 定</button></p>
+      </div>
+      <div class='field'>
+        <p class='align-right'><a href="/auth/login" class='oppo-tj'>已有OPPO帐号</a></p>
+      </div>
+    </form>
+
+  </div>
+  </main>
+
+    <script src="{$staticHost}lib/jquery-1.9.min.js"></script>
+
+ </body>
+
+</html>
