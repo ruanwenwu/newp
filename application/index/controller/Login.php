@@ -12,7 +12,7 @@ class Login extends BaseController
      *
      * @return \think\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         $this->assignPublicForView();
@@ -21,8 +21,32 @@ class Login extends BaseController
             "description"   =>  "d",
             "keywords"      =>  "k",
         );
+
+        $backUrl  = $request->get("backurl");
+        $backUrl  = $backUrl ? $backUrl : Config::get("main_host");
+        $this->assign("backUrl",$backUrl);
         $this->assign("seoData", $seoData);
         return $this->fetch("index");
+    }
+
+    public function register(Request $request){
+        $this->assignPublicForView();
+        $seoData = array(
+            "title"         =>  "t",
+            "description"   =>  "d",
+            "keywords"      =>  "k",
+        );
+        $backUrl  = $request->get("backurl");
+        $backUrl  = $backUrl ? $backUrl : Config::get("main_host");
+        $captcheKeyInfo = \app\index\service\Captche::generateKey(array("vtime"=>2));    //获得验证码信息
+        $this->assign("verifycodeunderkey",$captcheKeyInfo['verifykey']);
+        $this->assign("verifycodekey",$captcheKeyInfo['key']);
+        $this->assign("backUrl",$backUrl);
+        $this->assign("seoData", $seoData);
+        $this->assign("requestMsgUrl","/ajax/sendmsg/register");
+        $this->assign("doregisterUrl","/ajax/doregister");
+        $this->assign("pagetype","ordinary");
+        return $this->fetch('auth/register');
     }
 
     /**

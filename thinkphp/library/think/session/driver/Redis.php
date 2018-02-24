@@ -125,4 +125,9 @@ class Redis extends SessionHandler
     {
         return true;
     }
+    
+    public function create_sid() {
+    //$this->log('create_sid');
+    return uniqid();
+    }
 }

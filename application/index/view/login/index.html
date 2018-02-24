@@ -4,10 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
 
-    <title>{$seoData['title']}</title>
-    <meta name="keywords" content="{$seoData['keywords']}" />
-    <meta name="description" content="{$seoData['description']}" />
-    <link rel="stylesheet" href="{$staticHost}my/css/common.css" />
+    <title><{$seoData['title']}></title>
+    <meta name="keywords" content="<{$seoData['keywords']}>" />
+    <meta name="description" content="<{$seoData['description']}>" />
+    <link rel="stylesheet" href="<{$staticHost}>my/css/common.css" />
         <style>
             input:-webkit-autofill+label{display:none;}
             input:-moz-autofill+label{display:none;}
@@ -39,27 +39,7 @@
                 <!--主体登录框-->
                 <div class="login_area">
                     <div class="login_form" >
-                        <div class="input_area globalcont phonecont" id="globalUserNameCont">
-                            <div class="selectCountry" id="selectCycode">
-                                <p id="select_cycode_result" translang="selectcycode"></p>
-                                <i class="icon_arrow"></i>
-                            </div>
-                            <div class="country_ontainer_panel">
-                                <div class="country_container" status="unexpand" id="countryCont">
-                                    <div class="search_code">
-                                        <i class="icon_search"></i>
-                                        <input type="text" class="search_code_input" id="searchCodeInput" transplaceholder="searchcycode" placeholder="">
-                                    </div>
-                                    <div class="country_code" id="countryCodeCont">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="error_tip" id="info_selectCycode"></div>
-                        <div class="input_area globalcont">
-                            <input type="text"  id="globalusername" name="globalusername" autocomplete="off"  class="labelinput globalusername" />
-                            <label class="placeholder" for="globalusername" translang="login_msg_nophone"></label>
-                        </div>
+                    	<div style="display:none;" class="error_tip" id="info_response"></div>
                         <div class="input_area noglobalcont" id="noglobalUserNameCont">
                             <input type="text"  id="username" name="username" autocomplete="off"  class="labelinput username" />
                             <label class="placeholder" for="username" translang="login_msg_nousername">请输入手机号</label>
@@ -72,18 +52,7 @@
                         </div>
                         <div class="error_tip" id="info_pwd"></div>
 
-                        <div id="captcha_area">
-                            <div class="error_tip" id="info_vercode"></div>
-                        </div>
-
-
-                        <div class="field">
-                            <a href="javascript:;" class="globalcont text_green fl" id="globalLoginWayBtn" translang="useremaillogin"></a>
-                            <a onclick="problems();" class="text_green fr" translang="forgetpwd" id="forgetgobtn">忘记密码</a>
-                            <div class="clear"></div>
-
-                        </div>
-                        <input type="submit" class="button login_button mt30" id="loginBtn" transvalue="loginbtn" value="登陆" onclick="check_login();"  style="margin-bottom:15px;" />
+                        <input act="<{:url('index/ajax.user/doUsernameLogin')}>" type="submit" class="button login_button mt30" id="loginBtn" transvalue="loginbtn" value="登陆" onclick="check_login(this);"  style="margin-bottom:15px;" />
                         <input type="button" class="button register_button oppo-tj" id="registerBtn" transvalue="registerbtn" value="注册账号"  link = "/register/sms;JSESSIONID=57eb30e0-6858-4012-869f-cf58fa535073?type=1"  data-tj="account|link|register|register"/>
 
                         <div class="error_tip1" style="margin-top:10px;" id="info_login_form"></div>
@@ -92,7 +61,7 @@
                         <div class="n_links_area" id="otherLogin">
                             <div class="oth_type_list"></div>
                             <div class="oth_type_links">
-                                <a class="other_link ico_qq oppo-tj" href="http://my.ruanwenwu.cn/qqloginsdk/example/oauth/index.php"  data-tj="account|link|loginqq|qq"></a>
+                                <a class="other_link ico_qq oppo-tj" href="/qqloginsdk/example/oauth/index.php?backurl=<{$backUrl}>"  data-tj="account|link|loginqq|qq"></a>
                            <!--      <a  class="other_link ico_wb oppo-tj" link="http://my.oppo.com/auth/sinalogin" data-tj="account|link|loginweibo|weibo" ></a>
                            <a  class="other_link ico_alipay oppo-tj"  link="http://my.oppo.com/auth/alipaylogin" data-tj="account|link|loginzfb|zfb"></a> -->
                                 <a class="other_link ico_wx oppo-tj" link="http://my.oppo.com/auth/wxlogin" data-tj="account|link|loginwx|wx"></a>
@@ -102,7 +71,7 @@
                     </div>
                 </div>
             </div>
-
+		
             <div class="footer_info">
                 <p translang="footer_text"></p>
             </div>
@@ -118,28 +87,11 @@
             <div class="button login_button" style="margin-top:25px" id="timeout_btn">知道了</div>
         </div>
     </div>
-   <div>{:captcha_img()}</div>
 </body>
-<script src="{$staticHost}lib/jquery-1.9.min.js"></script>
 <script>
-//input失去焦点，如果输入内容为空，那么label要出来
-$(".labelinput").blur(function(){
-	if($(this).val() == ""){
-		$(this).next().show();
-	}
-});
-
-//input聚焦，如果内容为空，那么label隐藏
-$(".labelinput").focus(function(){
-	if($(this).val() == ""){
-		$(this).next().hide();
-	}
-});
-
-//验证手机格式->验证密码格式->验证验证码->给出对应提示
-function check_login(){
-	$(".error_tip").text("sdfsdf").show();
-	return false;
-}
+var backUrl = '<{$backUrl}>';
 </script>
+<script src="<{$staticHost}>lib/jquery-1.9.min.js"></script>
+<script src="<{$staticHost}>lib/validate.js"></script>
+<script src="<{$staticHost}>my/js/login.js"></script>
 </html>

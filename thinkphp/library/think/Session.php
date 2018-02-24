@@ -98,7 +98,7 @@ class Session
             $class = false !== strpos($config['type'], '\\') ? $config['type'] : '\\think\\session\\driver\\' . ucwords($config['type']);
 
             // 检查驱动类
-            if (!class_exists($class) || !session_set_save_handler(new $class($config))) {
+            if (!class_exists($class) || !session_set_save_handler(new $class($config),true)) {
                 throw new ClassNotFoundException('error session handler:' . $class, $class);
             }
         }
@@ -115,6 +115,7 @@ class Session
      * @return void
      */
     public static function boot()
+
     {
         if (is_null(self::$init)) {
             self::init();

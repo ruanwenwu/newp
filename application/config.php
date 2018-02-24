@@ -13,7 +13,14 @@ return [
     // +----------------------------------------------------------------------
     // | 应用设置
     // +----------------------------------------------------------------------
-    'static_host'           =>  'http://static.ruanwenwu.cn/',
+    'static_host'           =>  'http://static.ruanwenwu.cn/',      //静态资源地址
+    'main_host'             =>  'http://ruanwenwu.cn',   //主站地址
+    'msg_type'              =>  array(
+        "auth_register",    //授权注册
+        "register",         //普通注册
+        
+    ),
+    'host_name'             =>"http://my.ruanwenwu.cn",
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
@@ -129,9 +136,9 @@ return [
         // 模板文件名分隔符
         'view_depr'    => DS,
         // 模板引擎普通标签开始标记
-        'tpl_begin'    => '{',
+        'tpl_begin'    => '<{',
         // 模板引擎普通标签结束标记
-        'tpl_end'      => '}',
+        'tpl_end'      => '}>',
         // 标签库标签开始标记
         'taglib_begin' => '{',
         // 标签库标签结束标记
@@ -199,15 +206,15 @@ return [
     // +----------------------------------------------------------------------
 
     'session'                => [
-        'id'             => '',
-        // SESSION_ID的提交变量,解决flash上传跨域
-        'var_session_id' => '',
-        // SESSION 前缀
-        'prefix'         => 'think',
-        // 驱动方式 支持redis memcache memcached
-        'type'           => '',
-        // 是否自动开启 SESSION
-        'auto_start'     => true,
+        'prefix'     => 'module',
+    'type'       => 'redis',
+    'auto_start' => true,
+     // redis主机
+    'host'       => '127.0.0.1',
+     // redis端口
+    'port'       => 6379,
+     // 密码
+    'password'   => '',
     ],
 
     // +----------------------------------------------------------------------
@@ -236,4 +243,12 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    'secretekey'    =>  [
+        "login"     =>  "sdd9_pt7Fu_]eq*0rpj",
+        "register"  =>  "1sdf54ser[023*-rKlwd",
+        "verifycode"=>  "89w3roi9fcjsdf-_dsfd", //图片验证码key的生成密匙
+    ],
+    'rediskey'      =>  [   //redis下标前缀
+        "imgverifycode" =>  "img_verify:"   //图片验证码
+    ]
 ];

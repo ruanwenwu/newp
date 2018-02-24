@@ -3,6 +3,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use think\Loader;
+use think\Session;
 
 class Index extends Controller
 {
@@ -13,7 +14,7 @@ class Index extends Controller
     
     public function test($user,$blog_id){
         
-        $res = Db::query('select * from lsf_user where id=?',[1]);
+        $res = Db::query('select * from lsf_user where phone=?',[15901173164]);
         var_dump($res);die;
         echo $user.'-'.$blog_id;
         var_dump($this->request->param());die;
@@ -30,11 +31,24 @@ class Index extends Controller
     }
     
     public function dd(){
+       /*$redis = new \Redis();
+    $redis->connect('localhost', 6379);
+    $redis->auth('ruan[wenwu_2012');
+    $redis->set('key', 'hello world');
+    echo $redis->get('key');*/
+        Session::set('named','thinkphp');
+    die;
+        $handler =new Redis();
+        session_set_save_handler($handler, true);
+        $_SESSION['a'] = 4;
+        var_dump($_SESSION);die;
         //\API_Test::dd();
         $link = \API_Db_Lsf::instance();
         $res = $link->getRow("select * from lsf_user");
         var_dump($res);
     }
+
+
     
     
 }
