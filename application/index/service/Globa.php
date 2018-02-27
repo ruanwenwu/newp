@@ -21,10 +21,10 @@ class Globa extends Model{
         );
         
         if($param && is_array($option)) $option = array_merge($option,$param);
-        
+
         extract($option);
-        
-        if (!$type || (!$userid && !($openid && $oauthname)) || !$phone || !$tpltype || !$codeval) return false;
+
+        if (!$type || !$phone || !$tpltype || !$codeval) return false;
         
         $allowedBusiness = Config::get("msg_type");
 
@@ -59,6 +59,7 @@ class Globa extends Model{
             "tplType" => $tpltype,
             "codeVal"=>  $codeval
         ));
+
         if ($res['status']){
             //发送成功写日志
             

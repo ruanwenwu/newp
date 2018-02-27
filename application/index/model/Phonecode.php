@@ -43,7 +43,7 @@ class Phonecode extends Model{
         
         extract($option);
         
-        if (!$code || !$phone || !$type || (!$userid && !($openid && $oauthname))) return false;
+        if (!$code || !$phone || !$type) return false;
         
         $nowTime = date("Y-m-d H:i:s");
         $sql = "insert into lsf_phonecode_log (uid,code,oauth_id,oauth_name,phone,business_type,ctime) values ('$userid','$code','$openid','$oauthname','$phone','$type','$nowTime')";

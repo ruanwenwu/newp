@@ -35,6 +35,7 @@ class Auth extends BaseController{
         $this->assign("verifycodekey",$captcheKeyInfo['key']);
         $this->assign("backUrl",$authBackUrl);
         $this->assign("pagetype","auth");
+        $this->assign("hasaccountUrl","/auth/bind");
         return $this->fetch();
     }
     

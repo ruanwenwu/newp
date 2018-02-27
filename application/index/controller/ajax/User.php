@@ -90,7 +90,7 @@ public function sendMsgForAuthRegister(Request $request){
         $res = $this->checkIfPhoneReg($request);
 
         if ($res['status']){
-            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/auth/bind?phone={$phone}\">前往绑定</a>");
+            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/auth/bind\">前往绑定</a>");
         }
         //检查图形验证码是否正确
         $captcheService = \app\index\service\Captche::verifyCode($picCheckCode,$picCode);
@@ -169,7 +169,7 @@ public function sendMsgForAuthRegister(Request $request){
         $res = $this->checkIfPhoneReg($request);
         
         if ($res['status']){
-            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/auth/bind?phone={$phone}\">前往绑定</a>");
+            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/auth/bind\">前往绑定</a>");
         }
         //检查图形验证码是否正确
         $captcheService = \app\index\service\Captche::verifyCode($picCheckCode,$picCode);
@@ -272,7 +272,7 @@ public function sendMsgForAuthRegister(Request $request){
         $res = $this->checkIfPhoneReg($request);
     
         if ($res['status']){
-            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/auth/bind?phone={$phone}\">前往绑定</a>");
+            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/login\">登录</a>");
         }
         //检查图形验证码是否正确
         $captcheService = \app\index\service\Captche::verifyCode($picCheckCode,$picCode);
@@ -290,7 +290,7 @@ public function sendMsgForAuthRegister(Request $request){
             "tpltype"  =>"register",//模板类型
             "codeval"  =>"#code#={$randStr}",//模板替换内容
         ));
-    
+
         if ($sendStatus['status']){
             $phonecodeModel = \think\Loader::model("Phonecode","model");
             $phonecodeModel -> recordPhonecodeLog(array(
@@ -338,7 +338,7 @@ public function sendMsgForAuthRegister(Request $request){
         $res = $this->checkIfPhoneReg($request);
     
         if ($res['status']){
-            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/auth/bind?phone={$phone}\">前往绑定</a>");
+            return array("status"=>false,"message"=>"系统检测到该手机号已经注册过，请<a href=\"/login\">登录</a>");
         }
         //检查图形验证码是否正确
         $captcheService = \app\index\service\Captche::verifyCode($picCheckCode,$picCode);
@@ -349,17 +349,22 @@ public function sendMsgForAuthRegister(Request $request){
     
         //检查短信验证码是否有效
         $phoneCodeInfo = $phoneCodeModel->getPhonecodeLog(array(
-            "type"  =>  "auth_register", //业务类型,比如login,或者auth_register
+            "type"  =>  "register", //业务类型,比如login,或者auth_register
             "phone" =>  $phone,
         ));
+
+        if (!$phoneCodeInfo){
+            return array("status"=>false,"message"=>"hack detected");
+        }
+
+        if($phoneCodeInfo['code'] != $phoneCode){
+            return array("status"=>false,"message"=>"验证码输入错误");
+        }
+
         $phoneCodeTimeDiff = $nowTime - strtotime($phoneCodeInfo['ctime']) ;
     
         if (!$phoneCodeInfo['remaintime'] || $phoneCodeTimeDiff > 60000){
             return array("status"=>false,"message"=>"验证码已失效");
-        }
-    
-        if($phoneCodeInfo['code'] != $phoneCode){
-            return array("status"=>false,"message"=>"验证码输入错误");
         }
     
         //更新验证码的剩余次数

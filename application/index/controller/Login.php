@@ -46,6 +46,7 @@ class Login extends BaseController
         $this->assign("requestMsgUrl","/ajax/sendmsg/register");
         $this->assign("doregisterUrl","/ajax/doregister");
         $this->assign("pagetype","ordinary");
+        $this->assign("hasaccountUrl","/login");
         return $this->fetch('auth/register');
     }
 
